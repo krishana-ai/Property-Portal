@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+body {
+  @apply bg-slate-50 text-slate-900 text-sm;
+}
