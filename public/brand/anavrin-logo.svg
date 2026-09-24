@@ -1,0 +1,17 @@
+<svg width="347" height="94" viewBox="28 18 347 94" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Anavrin Properties horizontal logo</title>
+<desc>Horizontal lockup: roofline A monogram beside the Anavrin Properties wordmark</desc>
+
+
+
+<g transform="translate(70,70)">
+  <path d="M 0 -46 L 36 31 L 22 31 L 0 -15 L -22 31 L -36 31 Z" fill="#1B2A41"/>
+  <rect x="-7" y="10" width="14" height="21" fill="#B8935F"/>
+  <line x1="-13" y1="0" x2="13" y2="0" stroke="#B8935F" stroke-width="3"/>
+</g>
+
+<line x1="128" y1="34" x2="128" y2="106" stroke="#D8D2C4" stroke-width="1"/>
+
+<text x="156" y="70" font-family="Georgia, 'Times New Roman', serif" font-size="32" letter-spacing="3" fill="#1B2A41">ANAVRIN</text>
+<text x="156" y="96" font-family="Georgia, 'Times New Roman', serif" font-size="14" letter-spacing="5" fill="#B8935F">P R O P E R T I E S</text>
+</svg>

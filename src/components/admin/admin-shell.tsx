@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
 import { setMobileNavOpen, toggleMobileNav } from "@/lib/redux/slices/ui-slice";
@@ -14,10 +14,12 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const pathname = usePathname();
 
+  // Admin has its own sign-in, separate from the customer login on the website.
   useEffect(() => {
-    if (!isAuthenticated) router.replace("/login");
-  }, [isAuthenticated, router]);
+    if (!isAuthenticated) router.replace(`/admin/login?next=${encodeURIComponent(pathname)}`);
+  }, [isAuthenticated, pathname, router]);
 
   if (!isAuthenticated) {
     return (

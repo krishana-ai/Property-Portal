@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building } from "lucide-react";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { cn } from "@/lib/utils";
 import { NAV_GROUPS } from "./nav-config";
 
@@ -16,14 +16,13 @@ export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate?: () =
         open ? "translate-x-0" : "-translate-x-full"
       )}
     >
-      <div className="flex h-14 items-center gap-2.5 border-b border-slate-200 px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white shadow-sm">
-          <Building className="h-4 w-4" />
-        </div>
-        <div className="min-w-0 leading-tight">
-          <p className="truncate text-sm font-semibold text-slate-900">Anavrin Property</p>
-          <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">Admin Console</p>
-        </div>
+      <div className="flex h-14 items-center justify-between gap-2 border-b border-slate-200 px-5">
+        <Link href="/admin" aria-label="Admin dashboard" onClick={onNavigate} className="min-w-0">
+          <BrandLogo size="sm" />
+        </Link>
+        <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-slate-500">
+          Admin
+        </span>
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-4">

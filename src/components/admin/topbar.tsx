@@ -25,7 +25,7 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
 
   function handleSignOut() {
     dispatch(logout());
-    router.replace("/login");
+    router.replace("/admin/login");
   }
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Building,
   ShieldCheck,
@@ -10,6 +10,7 @@ import {
   ArrowLeft,
   Loader2,
 } from "lucide-react";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAppDispatch } from "@/lib/redux/hooks";
@@ -24,8 +25,14 @@ const HIGHLIGHTS = [
   { icon: Users, text: "Role-based access for moderators, support and finance teams" },
 ];
 
+/** Only return to pages inside the admin console after sign-in. */
+function safeAdminPath(next: string | null): string {
+  return next && next.startsWith("/admin") && !next.startsWith("/admin/login") && !next.startsWith("//") ? next : "/admin";
+}
+
 export function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
 
   const [step, setStep] = useState<"identifier" | "otp">("identifier");
@@ -60,7 +67,7 @@ export function LoginForm() {
     setLoading(true);
     setTimeout(() => {
       dispatch(login({ identifier }));
-      router.replace("/admin");
+      router.replace(safeAdminPath(searchParams.get("next")));
     }, 400);
   }
 
@@ -74,11 +81,8 @@ export function LoginForm() {
               "radial-gradient(circle at 20% 20%, rgba(99,102,241,0.45), transparent 45%), radial-gradient(circle at 80% 70%, rgba(56,189,248,0.35), transparent 50%)",
           }}
         />
-        <div className="relative flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-600">
-            <Building className="h-4.5 w-4.5" />
-          </div>
-          <span className="text-base font-semibold">Anavrin Property</span>
+        <div className="relative">
+          <BrandLogo tone="light" size="md" />
         </div>
 
         <div className="relative">
@@ -108,11 +112,8 @@ export function LoginForm() {
 
       <div className="flex flex-1 flex-col items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
-          <div className="mb-8 flex items-center gap-2 lg:hidden">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary-600 text-white">
-              <Building className="h-4.5 w-4.5" />
-            </div>
-            <span className="text-base font-semibold text-slate-900">Anavrin Property</span>
+          <div className="mb-8 lg:hidden">
+            <BrandLogo size="md" />
           </div>
 
           {step === "identifier" ? (

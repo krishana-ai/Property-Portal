@@ -36,9 +36,36 @@ const config: Config = {
           50: "#f0f9ff",
           600: "#0284c7",
         },
+        // Public site palette — deep ink surfaces with a restrained brass accent.
+        ink: {
+          DEFAULT: "#0B1120",
+          950: "#070B16",
+          900: "#0B1120",
+          800: "#131B2E",
+          700: "#1F2A44",
+          600: "#34405C",
+        },
+        brass: {
+          DEFAULT: "#C8A15E",
+          100: "#F5ECDB",
+          200: "#EAD8B4",
+          300: "#DDBF86",
+          400: "#D2AE6F",
+          500: "#C8A15E",
+          600: "#A9823F",
+          700: "#86652F",
+        },
+        sand: {
+          DEFAULT: "#F7F4EE",
+          50: "#FCFBF8",
+          100: "#F7F4EE",
+          200: "#EDE7DB",
+          300: "#DDD4C3",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       boxShadow: {
         card: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
